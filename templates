@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+template<typename t1,typename t2>
+
+class teacher{
+    public:
+    t1 name;
+    t2 age;
+    
+    teacher(t1 n,t2 age){
+    name=n;
+    age=age;
+}
+    void getteach(){
+        cout<<endl<<"TEACHER"<<endl;
+        cout<<"Name:-"<<name<<endl;
+    }
+};
+template<typename t1,typename t2>
+class student{
+public:
+    t1 name;
+    t2 age;
+    
+    student(t1 n,t2 a){
+    name=n;
+    age=a;
+}
+    void getstu(){
+        cout<<endl<<"STUDENT"<<endl;
+        cout<<"Name:-"<<name<<endl;
+        cout<<"age:-"<<age<<endl;
+    }
+};
+int main() {
+teacher t1("Nighi",66);
+student s1("Suresh",69);
+t1.getteach();
+s1.getstu();
+
+    return 0;
+}
