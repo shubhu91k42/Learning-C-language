@@ -103,10 +103,12 @@ class project_1{
     void getproject3(){
         cout<<endl<<endl<<"===SUBTRACTION==="<<endl<<endl;
         for(;;){
-            answer=0;
         cout<<endl<<"Enter how many you want to sub-->";
         cin>>num;
-        for(int i=1;i<=num;i++){
+        cout<<"Enter 1 number-->";
+        cin>>sub;
+        answer=sub;
+        for(int i=2;i<=num;i++){
             cout<<endl<<"Enter "<<i<<" number-->";
             cin>>sub;
             answer-=sub;
