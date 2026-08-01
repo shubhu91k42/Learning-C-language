@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-class project{
+class project_1{
     private:
     int num;
     char choice;
@@ -41,9 +41,54 @@ class project{
     }
 };
 
+    class project_2{
+    private:
+    int num;
+    float add=0;
+    float answer;
+    char choice;
+    public:
+    void project2(int n,char c,float a,float ans){
+        this->num=n;
+        this->choice=c;
+        this->add=a;
+        this->answer=ans;
+    }
+    
+    void getproject2(){
+        cout<<endl<<endl<<"===ADDING==="<<endl<<endl;
+        for(;;){
+        cout<<endl<<"Enter how many you want to add-->";
+        cin>>num;
+        for(int i=1;i<=num;i++){
+            cout<<endl<<"Enter "<<i<<" number-->";
+            cin>>add;
+            answer+=add;
+        }
+        cout<<endl<<"your answer is "<<answer;
+        
+    for(;;){
+       cout<<endl<<"Do you want to do more(Y/N)-->";
+       cin>>choice;
+       if(choice=='n'||choice=='N'){
+           cout<<endl<<"Tank you :)";
+           return;
+       }else if(choice=='y'||choice=='Y'){
+           break;
+       }else{
+           cout << "Invalid input! Only enter Y or N." << endl;
+           
+       }
+    }
+    }
+    
+    }
+};
+    
+
 int main(){
-    project p1;
-    p1.getproject1();
+    project_2 p2;
+    p2.getproject2();
     
     return 0;
 }
