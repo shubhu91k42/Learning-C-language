@@ -41,7 +41,7 @@ class project_1{
     }
 };
 
-    class project_2{
+class project_2{
     private:
     int num;
     float add=0;
@@ -86,7 +86,7 @@ class project_1{
     }
 };
 
-    class project_3{
+class project_3{
     private:
     int num;
     float sub=0;
@@ -132,11 +132,57 @@ class project_1{
     
     }
 };
+class project_4{
+    private:
+    int num;
+    float mul=1;
+    float answer;
+    char choice;
+    public:
+    void project3(int n,char c,float m,float ans){
+        this->num=n;
+        this->choice=c;
+        this->mul=m;
+        this->answer=ans;
+    }
     
+    void getproject4(){
+        cout<<endl<<endl<<"===MULTIPLICATION==="<<endl<<endl;
+        for(;;){
+        cout<<endl<<"Enter how many you want to mul-->";
+        cin>>num;
+        cout<<"Enter 1 number-->";
+        cin>>mul;
+        answer=mul;
+        for(int i=2;i<=num;i++){
+            cout<<endl<<"Enter "<<i<<" number-->";
+            cin>>mul;
+            answer*=mul;
+        }
+        cout<<endl<<"your answer is "<<answer;
+        
+    for(;;){
+       cout<<endl<<"Do you want to do more(Y/N)-->";
+       cin>>choice;
+       if(choice=='n'||choice=='N'){
+           cout<<endl<<"Tank you :)";
+           return;
+       }else if(choice=='y'||choice=='Y'){
+           break;
+       }else{
+           cout << "Invalid input! Only enter Y or N." << endl;
+           
+            }
+           }
+        }
+    
+    }
+};
+  
 
 int main(){
     int sw;
-cout<<"1.even or odd\n2.addtion\n3.subtraction";
+cout<<"1.even or odd\n2.addtion\n3.subtraction\n4.multiplication";
 cout<<endl<<"Enter number-->";
 cin>>sw;
 switch(sw){
@@ -154,6 +200,11 @@ switch(sw){
     project_3 p3;
     p3.getproject3();
     break;
+    }
+    case 4:{
+        project_4 p4;
+        p4.getproject4();
+        break;
     }
 }
     
