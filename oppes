@@ -58,6 +58,7 @@ class project_1{
     void getproject2(){
         cout<<endl<<endl<<"===ADDING==="<<endl<<endl;
         for(;;){
+            answer=0;
         cout<<endl<<"Enter how many you want to add-->";
         cin>>num;
         for(int i=1;i<=num;i++){
@@ -78,17 +79,81 @@ class project_1{
        }else{
            cout << "Invalid input! Only enter Y or N." << endl;
            
-       }
+            }
+           }
+        }
+    
     }
+};
+
+    class project_3{
+    private:
+    int num;
+    float sub=0;
+    float answer;
+    char choice;
+    public:
+    void project3(int n,char c,float s,float ans){
+        this->num=n;
+        this->choice=c;
+        this->sub=s;
+        this->answer=ans;
     }
+    
+    void getproject3(){
+        cout<<endl<<endl<<"===SUBTRACTION==="<<endl<<endl;
+        for(;;){
+            answer=0;
+        cout<<endl<<"Enter how many you want to sub-->";
+        cin>>num;
+        for(int i=1;i<=num;i++){
+            cout<<endl<<"Enter "<<i<<" number-->";
+            cin>>sub;
+            answer-=sub;
+        }
+        cout<<endl<<"your answer is "<<answer;
+        
+    for(;;){
+       cout<<endl<<"Do you want to do more(Y/N)-->";
+       cin>>choice;
+       if(choice=='n'||choice=='N'){
+           cout<<endl<<"Tank you :)";
+           return;
+       }else if(choice=='y'||choice=='Y'){
+           break;
+       }else{
+           cout << "Invalid input! Only enter Y or N." << endl;
+           
+            }
+           }
+        }
     
     }
 };
     
 
 int main(){
+    int sw;
+cout<<"1.even or odd\n2.addtion\n3.subtraction";
+cout<<endl<<"Enter number-->";
+cin>>sw;
+switch(sw){
+    case 1:{
+    project_1 p1;
+    p1.getproject1();
+    break;
+    }
+    case 2:{
     project_2 p2;
     p2.getproject2();
+    break;
+    }
+    case 3:{
+    project_3 p3;
+    p3.getproject3();
+    break;
+    }
+}
     
     return 0;
 }
