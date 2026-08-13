@@ -1,0 +1,235 @@
+//This is a Exam Marks Management System;
+#include <iostream>
+#include <string>
+#include <iterator>
+using namespace std;
+
+class Student
+{
+  private:
+    string student_name;
+    int maths_marks;
+    int physics_marks;
+    int chemistry_marks;
+    int english_marks;
+    int hindi_marks;
+    float avg = 0;
+    char grade = 'X';
+
+  public:
+    void getStudentDetails()
+    {
+        cout << "Enter Student Name: ";
+
+        cin >> student_name;
+
+        cout << endl
+             << "Enter Maths Marks: ";
+
+        cin >> maths_marks;
+
+        cout << endl
+             << "Enter Physics Marks: ";
+
+        cin >> physics_marks;
+
+        cout << endl
+             << "Enter Chemistry Marks: ";
+
+        cin >> chemistry_marks;
+
+        cout << endl
+             << "Enter English Marks: ";
+        cin >> english_marks;
+
+        cout << endl
+             << "Enter Hindi Marks: ";
+        cin >> hindi_marks;
+
+        getAvgOfStudent();
+    }
+
+    float getAvgOfStudent()
+    {
+        avg = (maths_marks + physics_marks + chemistry_marks + english_marks + hindi_marks) / 5;
+
+        return avg;
+    }
+
+    char getStudentGrade()
+    {
+        /*if (avg=0){
+        getAvgOfStudent();
+      }*/
+        if ((avg > 70) && (isStudentPass() == true))
+        {
+            grade = 'A';
+        }
+        else if ((avg > 50) && (isStudentPass() == true))
+        {
+            grade = 'B';
+        }
+        else if ((avg > 40) && (isStudentPass() == true))
+        {
+            grade = 'C';
+        }
+        else
+        {
+            grade = 'F';
+        }
+        return grade;
+    }
+
+    bool isStudentPass()
+    {
+        /*if (avg=0){
+        getAvgOfStudent();
+      }*/
+        if ((maths_marks > 40) && (physics_marks > 40) && (chemistry_marks > 40) && (english_marks > 40) && (hindi_marks > 40))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    int getMarks(string x)
+    {
+        if (x == "maths")
+        {
+            return maths_marks;
+        }
+        else if (x == "phy")
+        {
+            return physics_marks;
+        }
+        else if (x == "chem")
+        {
+            return chemistry_marks;
+        }
+        else if (x == "eng")
+        {
+            return english_marks;
+        }
+        else if (x == "hi")
+        {
+            return hindi_marks;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    void displayStudentDetail()
+    {
+        cout << "\nStudent Name: " << student_name << "." << endl;
+
+        cout << "Maths Marks: " << maths_marks << endl;
+        cout << "Physics Marks: " << physics_marks << endl;
+        cout << "Chemistry Marks: " << chemistry_marks << endl;
+        cout << "English Marks: " << english_marks << endl;
+        cout << "Hindi Marks: " << hindi_marks << endl;
+        cout << "----x----x----x----x----x----x----" << endl;
+    }
+    string getStudentName()
+    {
+        return student_name;
+    }
+};
+
+int main()
+{
+    int n;
+    cout << "Enter number of Students you want to add: ";
+    cin >> n;
+
+    Student s[n];
+    cout << "\nEnter Students Details:\n"
+         << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\nStudent: " << i + 1 << endl;
+        s[i].getStudentDetails();
+    }
+    while (true)
+    {
+        int a;
+        cout << "\nChoose Student or enter 0 to exit: " << endl;
+        for (int i = 0; i < n; i++)
+        {
+            cout << s[i].getStudentName() << endl;
+        }
+        cin >> a;
+        if (a==0){
+            cout<<"Have a nice day...";
+            break;
+        }
+        int z;
+        cout << "Enter what you want to do: \nTo check average marks of student press 1\nTo check grade press 2\nTo check the passing status of student press 3\nTo check marks of specific subject press 4\nTo display performance of student press 5:" << endl;
+        cin >> z;
+        if (z == 1)
+        {
+            cout << "Average Marks of " << s[a - 1].getStudentName() << " is " << s[a - 1].getAvgOfStudent() << "." << endl;
+            //management();
+        }
+        else if (z == 2)
+        {
+            cout << "Grade of " << s[a - 1].getStudentName() << " is " << s[a - 1].getStudentGrade() << "." << endl;
+            //management();
+        }
+        else if (z == 3)
+        {
+            string st;
+            if (s[a - 1].isStudentPass() == true)
+            {
+                st = "Pass";
+            }
+            else
+            {
+                st = "Fail";
+            }
+            cout << "Passing Status of " << s[a - 1].getStudentName() << " is " << st << "." << endl;
+            //management();
+        }
+        else if (z == 4)
+        {
+            int sub;
+            cout << "Which subject you want to check:" << endl
+                 << "1.Physics\n2.Chemistry\n3.Maths\n4.English\n5.Hindi" << endl;
+            cin >> sub;
+            switch (sub)
+            {
+            case 1:
+                cout<<s[a - 1].getMarks("phy");
+                break;
+            case 2:
+                cout<<s[a - 1].getMarks("chem");
+                break;
+            case 3:
+                cout<<s[a - 1].getMarks("maths");
+                break;
+            case 4:
+                cout<<s[a - 1].getMarks("eng");
+                break;
+            case 5:
+                cout<<s[a - 1].getMarks("hi");
+                break;
+            default:
+                break;
+            }
+            cout << endl;
+            //management();
+        }
+        else if (z == 5)
+        {
+            s[a - 1].displayStudentDetail();
+            //management();
+        }
+        //void management();
+    }
+
+    //void management(){
+}
