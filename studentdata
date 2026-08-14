@@ -5,19 +5,19 @@ using namespace std;
 class student{
     private:
     string name;
-    int age;
-    int roll;
-    float english_marks;
-    float hindi_marks;
-    float marathi_marks;
-    float maths_marks;
-    float science_marks;
+    int age=0;
+    int roll=0;
+    float english_marks=0;
+    float hindi_marks=0;
+    float marathi_marks=0;
+    float maths_marks=0;
+    float science_marks=0;
     float per=0;
     char grade;
     public:
     void studentdetails(){
         cout<<"\nEnter student name-->";
-        cin>>name;
+        getline(cin>>ws,name);
         cout<<"Enter student age-->";
         cin>>age;
         cout<<"Enter student roll number-->";
@@ -68,16 +68,20 @@ class student{
         return grade;
     }
     void studentdisplay(){
-        cout<<"\nStudent name-->"<<name<<endl;
+        cout<<"*-------------------------------------------------*"<<endl;
+        cout<<"Student name-->"<<name<<endl;
         cout<<"Student age-->"<<age<<endl;
-        cout<<"Student roll number-->"<<roll<<endl<<endl;
+        cout<<"Student roll number-->"<<roll<<endl;
+        cout<<"-------------------------------------------------"<<endl;
         cout<<"English marks-->"<<english_marks<<endl;
         cout<<"Hindi marks-->"<<hindi_marks<<endl;
         cout<<"Marathi marks-->"<<marathi_marks<<endl;
         cout<<"Maths marks-->"<<maths_marks<<endl;
-        cout<<"Science marks-->"<<science_marks<<endl<<endl;
+        cout<<"Science marks-->"<<science_marks<<endl;
+        cout<<"-------------------------------------------------"<<endl;
         cout<<"Student percentage-->"<<per<<"%"<<endl;
         cout<<"Student grade-->"<<grade<<endl;
+        cout<<"*-------------------------------------------------*"<<endl;
     }
         float getpercentage() {
         return per;
@@ -92,26 +96,25 @@ int main(){
     cout<<"Enter how many student data to add-->";
     cin>>n;
     vector <student> s(n);
-    cout<<"\n--Student data--\n\n";
+    cout<<"\n--Student data--\n";
     for(int i=0;i<n;i++){
-        cout<<"\nStudent "<<i+1;
+        cout<<"\nStudent "<<i+1<<endl;
         s[i].studentdetails();
         s[i].studentpercentage();
         s[i].isstudentpass();
         s[i].studentgrade();
     }
-    cout<<"\n--Student detials--\n\n";
+    cout<<"\n--Student detials--\n";
         for(int i=0;i<n;i++){
-        cout<<"\nStudent "<<i+1;
+        cout<<"\nStudent "<<i+1<<endl;
         s[i].studentdisplay();
     }
-    int topstudent = 0;
-    for(int i = 1; i < n; i++){
-        if (s[i].getpercentage() > s[topstudent].getpercentage()) {
-            topstudent = i;
+    int top=0;
+    for(int i=1;i<n;i++){
+        if(s[i].getpercentage()>s[top].getpercentage()){
+            top=i;
         }
     }
-    cout << "\n\n-- Top Student --\n";
-    cout << "Top Student --> "<< s[topstudent].getname() << endl;
-    cout << "Percentage --> "<< s[topstudent].getpercentage() << "%" << endl;
+    cout<<"\n--Topper--\n";
+    s[top].studentdisplay();
 }
