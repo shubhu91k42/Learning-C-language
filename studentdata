@@ -1,0 +1,99 @@
+#include <iostream>
+using namespace std;
+
+class student{
+    private:
+    string name;
+    int age;
+    int roll;
+    float english_marks;
+    float hindi_marks;
+    float marathi_marks;
+    float maths_marks;
+    float science_marks;
+    float avg=0;
+    float per=0;
+    char grade;
+    public:
+    void studentdetials(){
+        cout<<"Enter student name-->";
+        cin>>name;
+        cout<<"Enter student age-->";
+        cin>>age;
+        cout<<"Enter student roll number-->";
+        cin>>roll;
+        cout<<"Enter English marks-->";
+        cin>>english_marks;
+        cout<<"Enter Hindi marks-->";
+        cin>>hindi_marks;
+        cout<<"Enter Marathi marks-->";
+        cin>>marathi_marks;
+        cout<<"Enter Maths marks-->";
+        cin>>maths_marks;
+        cout<<"Enter Science marks-->";
+        cin>>science_marks;
+    }
+    float studentpercentage(){
+        per=((english_marks+hindi_marks+marathi_marks+maths_marks+science_marks)/500)*100;
+        return per;
+        cout<<"%";
+    }
+    bool isstudentpass(){
+        if((english_marks>40)&&(hindi_marks>40)&&(marathi_marks>40)&&(maths_marks>40)&&(science_marks>40)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    char studentgrade(){
+        if (isstudentpass()) {
+            if (per >= 90)
+                grade = 'A';
+            else if (per >= 80)
+                grade = 'B';
+            else if (per >= 70)
+                grade = 'C';
+            else if (per >= 60)
+                grade = 'D';
+            else if (per >= 40)
+                grade = 'E';
+        } 
+        else {
+            grade = 'F';
+        }
+
+        return grade;
+    }
+    void studentdisplay(){
+        cout<<"Student name-->"<<name;
+        cout<<"Student age-->"<<age<<endl;
+        cout<<"Student roll number-->"<<roll<<endl;
+        cout<<"English marks-->"<<english_marks<<endl;
+        cout<<"Hindi marks-->"<<hindi_marks<<endl;
+        cout<<"Marathi marks-->"<<marathi_marks<<endl;
+        cout<<"Maths marks-->"<<maths_marks<<endl;
+        cout<<"Science marks-->"<<science_marks<<endl;
+        cout<<"Student average-->"<<avg<<endl;
+        cout<<"Student precentage-->"<<per<<endl;
+        cout<<"Student grade-->"<<grade<<endl;
+    }
+};
+int main(){
+    int n;
+    cout<<"Enter how many student data to add-->";
+    cin>>n;
+    student s[n];
+    cout<<"\nStudent data\n";
+    for(int i=0;i<n;i++){
+        cout<<"Student "<<i+1;
+        s[i].studentdetials();
+        s[i].studentpercentage();
+        s[i].isstudentpass();
+        s[i].studentgrade();
+    }
+    cout<<"\nStudent detials\n";
+        for(int i=0;i<n;i++){
+        cout<<"Student "<<i+1;
+        s[i].studentdisplay();
+    }
+}
