@@ -38,7 +38,11 @@ class student{
         return per;
     }
     bool isstudentpass(){
-        if(english_marks>40&&hindi_marks>40&&marathi_marks>40&&maths_marks>40&&science_marks>40){
+        if(english_marks>40&&
+           hindi_marks>40&&
+           marathi_marks>40&&
+           maths_marks>40&&
+           science_marks>40){
             return true;
         }else{
             return false;
@@ -57,7 +61,7 @@ class student{
             else if (per >= 40)
                 grade = 'E';
         } 
-        else {
+        else if(!isstudentpass()) {
             grade = 'F';
         }
 
@@ -74,6 +78,13 @@ class student{
         cout<<"Science marks-->"<<science_marks<<endl<<endl;
         cout<<"Student percentage-->"<<per<<"%"<<endl;
         cout<<"Student grade-->"<<grade<<endl;
+    }
+        float getpercentage() {
+        return per;
+    }
+
+    string getname() {
+        return name;
     }
 };
 int main(){
@@ -94,4 +105,13 @@ int main(){
         cout<<"\nStudent "<<i+1;
         s[i].studentdisplay();
     }
+    int topstudent = 0;
+    for(int i = 1; i < n; i++){
+        if (s[i].getpercentage() > s[topstudent].getpercentage()) {
+            topstudent = i;
+        }
+    }
+    cout << "\n\n-- Top Student --\n";
+    cout << "Top Student --> "<< s[topstudent].getname() << endl;
+    cout << "Percentage --> "<< s[topstudent].getpercentage() << "%" << endl;
 }
