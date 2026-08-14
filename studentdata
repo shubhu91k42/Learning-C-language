@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class student{
@@ -11,12 +12,11 @@ class student{
     float marathi_marks;
     float maths_marks;
     float science_marks;
-    float avg=0;
     float per=0;
     char grade;
     public:
-    void studentdetials(){
-        cout<<"Enter student name-->";
+    void studentdetails(){
+        cout<<"\nEnter student name-->";
         cin>>name;
         cout<<"Enter student age-->";
         cin>>age;
@@ -36,10 +36,9 @@ class student{
     float studentpercentage(){
         per=((english_marks+hindi_marks+marathi_marks+maths_marks+science_marks)/500)*100;
         return per;
-        cout<<"%";
     }
     bool isstudentpass(){
-        if((english_marks>40)&&(hindi_marks>40)&&(marathi_marks>40)&&(maths_marks>40)&&(science_marks>40)){
+        if(english_marks>40&&hindi_marks>40&&marathi_marks>40&&maths_marks>40&&science_marks>40){
             return true;
         }else{
             return false;
@@ -65,16 +64,15 @@ class student{
         return grade;
     }
     void studentdisplay(){
-        cout<<"Student name-->"<<name;
+        cout<<"\nStudent name-->"<<name<<endl;
         cout<<"Student age-->"<<age<<endl;
-        cout<<"Student roll number-->"<<roll<<endl;
+        cout<<"Student roll number-->"<<roll<<endl<<endl;
         cout<<"English marks-->"<<english_marks<<endl;
         cout<<"Hindi marks-->"<<hindi_marks<<endl;
         cout<<"Marathi marks-->"<<marathi_marks<<endl;
         cout<<"Maths marks-->"<<maths_marks<<endl;
-        cout<<"Science marks-->"<<science_marks<<endl;
-        cout<<"Student average-->"<<avg<<endl;
-        cout<<"Student precentage-->"<<per<<endl;
+        cout<<"Science marks-->"<<science_marks<<endl<<endl;
+        cout<<"Student percentage-->"<<per<<"%"<<endl;
         cout<<"Student grade-->"<<grade<<endl;
     }
 };
@@ -82,18 +80,18 @@ int main(){
     int n;
     cout<<"Enter how many student data to add-->";
     cin>>n;
-    student s[n];
-    cout<<"\nStudent data\n";
+    vector <student> s(n);
+    cout<<"\n--Student data--\n\n";
     for(int i=0;i<n;i++){
-        cout<<"Student "<<i+1;
-        s[i].studentdetials();
+        cout<<"\nStudent "<<i+1;
+        s[i].studentdetails();
         s[i].studentpercentage();
         s[i].isstudentpass();
         s[i].studentgrade();
     }
-    cout<<"\nStudent detials\n";
+    cout<<"\n--Student detials--\n\n";
         for(int i=0;i<n;i++){
-        cout<<"Student "<<i+1;
+        cout<<"\nStudent "<<i+1;
         s[i].studentdisplay();
     }
 }
