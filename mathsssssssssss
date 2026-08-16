@@ -205,6 +205,18 @@ int main(){
             default:
                 cout<<"Invalid choice. Please try again."<<endl;
         }
+        if(choice!=7){
+            int continueChoice;
+            cout<<"\nDo you want to continue? (1 for Yes, 0 for No): ";
+            while(!(cin>>continueChoice) || (continueChoice!=0 && continueChoice!=1)){
+                cout<<"Invalid input. Please enter 1 to continue or 0 to exit: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if(continueChoice==0){
+                choice=7;
+            }
+        }
     }while(choice!=7);
     return 0;
 }
