@@ -1,127 +1,210 @@
 #include <iostream>
+#include <string>
+#include <limits>
 using namespace std;
 
-class oe{
+class oddandeven{
     private:
     int num;
     public:
-    void getinfo(){
+    void getnumber(){
         cout<<"Enter a number-->";
-        cin>>num;
+        while(!(cin>>num)){
+            cout<<"Invalid input. Please enter a valid number: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+    void checkevenodd(){
         if(num%2==0){
-            cout<<num<<" is even number";
-        }else if(num%2!=0){
-            cout<<num<<" is odd number";
+            cout<<num<<" is an even number."<<endl;
         }else{
-            cout<<num<<" is not odd or even";
+            cout<<num<<" is an odd number."<<endl;
         }
     }
 };
-class add{
+class addtion{
     private:
-    float n,num,answer;
+    float num,answer,n;
     public:
-    void getinfo(){
-        cout<<"Enter how many number to add-->";
-        cin>>n;
-        for(int i=0;i<n;i++){
-            cout<<"Enter a "<<i+1<<" number-->";
-            cin>>num;
+    void getnumbers(){
+        cout<<"Enter the number of elements to add-->";
+        while(!(cin>>n)){
+            cout<<"Invalid input. Please enter a valid number: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        answer=0;
+        for(int i=1;i<=n;i++){
+            cout<<"Enter number "<<i<<"-->";
+            while(!(cin>>num)){
+                cout<<"Invalid input. Please enter a valid number: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
             answer+=num;
         }
-        cout<<"Your addtion is "<<answer;
+        cout<<"The sum of the numbers is: "<<answer<<endl;
     }
 };
-class sub{
+class subtraction{
     private:
-    float n,num,answer;
+    float num,answer,n;
     public:
-    void getinfo(){
-        cout<<"Enter how many number to sub-->";
-        cin>>n;
-        cout<<"Enter 1 number-->";
-        cin>>num;
-        answer=num;
-        for(int i=1;i<n;i++){
-            cout<<"Enter "<<i+1<<" number-->";
-            cin>>num;
-            answer-=num;
+    void getnumbers(){
+        cout<<"Enter the number of elements to subtract-->";
+        while(!(cin>>n)){
+            cout<<"Invalid input. Please enter a valid number: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-        cout<<"Your subtraction is "<<answer;
+        answer=0;
+        for(int i=1;i<=n;i++){
+            cout<<"Enter number "<<i<<"-->";
+            while(!(cin>>num)){
+                cout<<"Invalid input. Please enter a valid number: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if(i==1){
+                answer=num;
+            }else{
+                answer-=num;
+            }
+        }
+        cout<<"The result of the subtraction is: "<<answer<<endl;
     }
 };
-class mul{
+class multiplication{
     private:
-    float n,num,answer;
+    float num,answer,n;
     public:
-    void getinfo(){
-        cout<<"Enter how many number to multiplie-->";
-        cin>>n;
-        num=1;
+    void getnumbers(){
+        cout<<"Enter the number of elements to multiply-->";
+        while(!(cin>>n)){
+            cout<<"Invalid input. Please enter a valid number: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
         answer=1;
-        for(int i=0;i<n;i++){
-            cout<<"Enter "<<i+1<<" number-->";
-            cin>>num;
+        for(int i=1;i<=n;i++){
+            cout<<"Enter number "<<i<<"-->";
+            while(!(cin>>num)){
+                cout<<"Invalid input. Please enter a valid number: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
             answer*=num;
         }
-        cout<<"Your multiplication is "<<answer;
+        cout<<"The product of the numbers is: "<<answer<<endl;
     }
 };
-class dive{
+class division{
     private:
-    float num1,num2,answer;
+    float num,answer,n;
     public:
-    void getinfo(){
-        cout<<"Enter 1 number-->";
-        cin>>num1;
-        cout<<"Enter 2 number-->";
-        cin>>num2;
-        answer=num1/num2;
-        cout<<"Your div is "<<answer;
+    void getnumbers(){
+        cout<<"Enter the number of elements to divide-->";
+        while(!(cin>>n)){
+            cout<<"Invalid input. Please enter a valid number: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        answer=0;
+        for(int i=1;i<=n;i++){
+            cout<<"Enter number "<<i<<"-->";
+            while(!(cin>>num)){
+                cout<<"Invalid input. Please enter a valid number: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if(i==1){
+                answer=num;
+            }else{
+                if(num==0){
+                    cout<<"Division by zero is not allowed. Please enter a non-zero number."<<endl;
+                    i--;
+                    continue;
+                }
+                answer/=num;
+            }
+        }
+        cout<<"The result of the division is: "<<answer<<endl;
     }
 };
-
+class square{
+    private:
+    float num,answer;
+    public:
+    void getnumber(){
+        cout<<"Enter a number-->";
+        while(!(cin>>num)){
+            cout<<"Invalid input. Please enter a valid number: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+    void calculatesquare(){
+        answer=num*num;
+        cout<<"The square of the number is: "<<answer<<endl;
+    }
+};
 int main(){
-    int n;
-    char choice;
-    cout<<"MATHSSSSSSSSSSSSSSS"<<endl;
-    for(;;){
-    cout<<"1.Even or Odd"<<endl;
-    cout<<"2.Addition"<<endl;
-    cout<<"3.Subtraction"<<endl;
-    cout<<"4.multiplication"<<endl;
-    cout<<"5.Division"<<endl;
-    cout<<"\nEnter number-->";
-    cin>>n;
-    switch(n){
-        case 1:
-        oe o1;
-        o1.getinfo();
-        break;
-        case 2:
-        add a1;
-        a1.getinfo();
-        break;
-        case 3:
-        sub s1;
-        s1.getinfo();
-        break;
-        case 4:
-        mul m1;
-        m1.getinfo();
-        break;
-        case 5:
-        dive d1;
-        d1.getinfo();
-        break;
-    }
-    cout<<"\n\n\nDo you want to do moree(y/n)-->";
-    cin>>choice;
-    if(choice=='y'||choice=='Y'){
-
-    }else{
-        cout<<"thank you :)";
-        break;
-    }
-    }
+    int choice;
+    do{
+        cout<<"\n--Maths Operations--\n";
+        cout<<"1. Odd or Even\n";
+        cout<<"2. Addition\n";
+        cout<<"3. Subtraction\n";
+        cout<<"4. Multiplication\n";
+        cout<<"5. Division\n";
+        cout<<"6. Square of a number\n";
+        cout<<"7. Exit\n";
+        cout<<"Enter your choice-->";
+        while(!(cin>>choice)){
+            cout<<"Invalid input. Please enter a valid choice: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        switch(choice){
+            case 1:{
+                oddandeven obj;
+                obj.getnumber();
+                obj.checkevenodd();
+                break;
+            }
+            case 2:{
+                addtion obj;
+                obj.getnumbers();
+                break;
+            }
+            case 3:{
+                subtraction obj;
+                obj.getnumbers();
+                break;
+            }
+            case 4:{
+                multiplication obj;
+                obj.getnumbers();
+                break;
+            }
+            case 5:{
+                division obj;
+                obj.getnumbers();
+                break;
+            }
+            case 6:{
+                square obj;
+                obj.getnumber();
+                obj.calculatesquare();
+                break;
+            }
+            case 7:
+                cout<<"Exiting the program."<<endl;
+                break;
+            default:
+                cout<<"Invalid choice. Please try again."<<endl;
+        }
+    }while(choice!=7);
+    return 0;
 }
