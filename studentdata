@@ -10,10 +10,10 @@ class student{
     int age=0;
     int roll=0;
     float english_marks=0;
-    float hindi_marks=0;
-    float marathi_marks=0;
+    float physics_marks=0;
+    float chemistry_marks=0;
     float maths_marks=0;
-    float science_marks=0;
+    float IT_marks=0;
     float per=0;
     char grade;
     public:
@@ -21,58 +21,30 @@ class student{
         cout<<"\nEnter student name-->";
         getline(cin>>ws,name);
         cout<<"Enter student age-->";
-        while(!(cin>>age)){
-            cout<<"Invalid input. Please enter a valid age: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+        cin>>age;
         cout<<"Enter student roll number-->";
-        while(!(cin>>roll)){
-            cout<<"Invalid input. Please enter a valid roll number: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+        cin>>roll;
         cout<<"Enter English marks-->";
-        while(!(cin>>english_marks)){
-            cout<<"Invalid input. Please enter a valid English marks: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-        cout<<"Enter Hindi marks-->";
-        while(!(cin>>hindi_marks)){
-            cout<<"Invalid input. Please enter a valid Hindi marks: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-        cout<<"Enter Marathi marks-->";
-        while(!(cin>>marathi_marks)){
-            cout<<"Invalid input. Please enter a valid Marathi marks: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+        cin>>english_marks;
+        cout<<"Enter Physics marks-->";
+        cin>>physics_marks;
+        cout<<"Enter Chemistry marks-->";
+        cin>>chemistry_marks;
         cout<<"Enter Maths marks-->";
-        while(!(cin>>maths_marks)){
-            cout<<"Invalid input. Please enter a valid Maths marks: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-        cout<<"Enter Science marks-->";
-        while(!(cin>>science_marks)){
-            cout<<"Invalid input. Please enter a valid Science marks: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+        cin>>maths_marks;
+        cout<<"Enter IT marks-->";
+        cin>>IT_marks;
     }
     float studentpercentage(){
-        per=((english_marks+hindi_marks+marathi_marks+maths_marks+science_marks)/500)*100;
+        per=((english_marks+physics_marks+chemistry_marks+maths_marks+IT_marks)/500)*100;
         return per;
     }
     bool isstudentpass(){
         if(english_marks>40&&
-           hindi_marks>40&&
-           marathi_marks>40&&
+           physics_marks>40&&
+           chemistry_marks>40&&
            maths_marks>40&&
-           science_marks>40){
+           IT_marks>40){
             return true;
         }else{
             return false;
@@ -104,21 +76,14 @@ class student{
         cout<<"Student roll number-->"<<roll<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<"English marks-->"<<english_marks<<endl;
-        cout<<"Hindi marks-->"<<hindi_marks<<endl;
-        cout<<"Marathi marks-->"<<marathi_marks<<endl;
+        cout<<"Physics marks-->"<<physics_marks<<endl;
+        cout<<"Chemistry marks-->"<<chemistry_marks<<endl;
         cout<<"Maths marks-->"<<maths_marks<<endl;
-        cout<<"Science marks-->"<<science_marks<<endl;
+        cout<<"IT marks-->"<<IT_marks<<endl;
         cout<<"-------------------------------------------------"<<endl;
         cout<<"Student percentage-->"<<per<<"%"<<endl;
         cout<<"Student grade-->"<<grade<<endl;
         cout<<"*-------------------------------------------------*"<<endl;
-    }
-        float getpercentage() {
-        return per;
-    }
-
-    string getname() {
-        return name;
     }
 };
 int main(){
@@ -141,7 +106,7 @@ int main(){
     }
     int top=0;
     for(int i=1;i<n;i++){
-        if(s[i].getpercentage()>s[top].getpercentage()){
+        if(s[i].studentpercentage()>s[top].studentpercentage()){
             top=i;
         }
     }
