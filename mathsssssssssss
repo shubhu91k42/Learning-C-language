@@ -19,9 +19,21 @@ class oddeven{
         }
     }
 };
-class prime{
+class square{
     private:
     int num;
+    public:
+    void getnum(){
+        cout<<"Enter a number-->";
+        cin>>num;
+    }
+    void calculatesquare(){
+        cout<<num<<" squared is "<<num*num<<endl;
+    }
+};
+class prime{
+    private:
+    int num,r=0;
     public:
     void getnum(){
         cout<<"Enter a number-->";
@@ -32,9 +44,10 @@ class prime{
             cout<<num<<" is not a prime number."<<endl;
             return;
         }
-        for(int i=2; i*i<=num; i++){
-            if(num % i == 0){
-                cout<<num<<" is not a prime number."<<endl;
+        for(int i=2; i<num; i++){
+            if(num%i==0){
+                r=num/i;
+                cout<<num<<" is not a prime number."<<i<<"X"<<r<<"="<<i*r<<endl;
                 return; 
             }
         }
@@ -114,7 +127,7 @@ class division{
         cout<<"The quotient of "<<num<<" numbers is "<<quotient<<endl;
     }
 };
-class fiboonacci{
+class fibonacci{
     private:
     int num,first=0,second=1,next;
     public:
@@ -148,16 +161,17 @@ class table{
 };
 int main(){
     oddeven o;
+    square sq;
     prime p;
     addition a;
     subtraction s;
     multiplication m;
     division d;
-    fiboonacci f;
+    fibonacci f;
     table t;
     int choice;
     do{
-        cout<<"\n1. Check Odd/Even\n2. Check Prime\n3. Addition\n4. Subtraction\n5. Multiplication\n6. Division\n7. Fibonacci Series\n8. Multiplication Table\n9. Exit"<<endl;
+        cout<<"\n1. Check Odd/Even\n2. Get Square\n3. Check Prime\n4. Addition\n5. Subtraction\n6. Multiplication\n7. Division\n8. Fibonacci Series\n9. Multiplication Table\n10. Exit"<<endl;
         cout<<"Enter your choice-->";
         cin>>choice;
         switch(choice){
@@ -166,35 +180,39 @@ int main(){
                 o.checkevenodd();
                 break;
             case 2:
+                sq.getnum();
+                sq.calculatesquare();
+                break;
+            case 3:
                 p.getnum();
                 p.checkprime();
                 break;
-            case 3:
+            case 4:
                 a.getnumbers();
                 break;
-            case 4:
+            case 5:
                 s.getnumbers();
                 break;
-            case 5:
+            case 6:
                 m.getnumbers();
                 break;
-            case 6:
+            case 7:
                 d.getnumbers();
                 break;
-            case 7:
+            case 8:
                 f.getnum();
                 f.printfibonacci();
                 break;
-            case 8:
+            case 9:
                 t.getnum();
                 t.printtable();
                 break;
-            case 9:
+            case 10:
                 cout<<"Exiting..."<<endl;
                 break;
             default:
                 cout<<"Invalid choice! Please try again."<<endl;
         }
-    }while(choice!=9);
+    }while(choice!=10);
     return 0;
 }
