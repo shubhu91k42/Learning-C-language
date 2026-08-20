@@ -1,0 +1,26 @@
+#include <iostream>
+#include <list>
+using namespace std;
+int main(){
+    int n;
+    int top=0;
+    list<int> lst={};
+        for(int i=1;i;i++){
+            cout<<"Enter "<<i<<" number-->";
+            cin>>n;
+        if(n==0){
+            cout<<"==end=="<<endl;
+            break;
+        }
+        if(n>top){
+        lst.push_back(n);
+        top=n;
+        }else{
+            lst.push_front(n);
+        }  
+        lst.sort();
+        }
+        for(int x:lst){
+            cout<<x<<endl;
+        }
+}
