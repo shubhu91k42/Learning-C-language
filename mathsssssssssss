@@ -40,18 +40,28 @@ class prime{
         cin>>num;
     }
     void checkprime(){
-        if(num <= 1){
-            cout<<num<<" is not a prime number."<<endl;
-            return;
+        bool isprime=true;
+        if(num<=1){
+            isprime=false;
         }
         for(int i=2; i<num; i++){
             if(num%i==0){
-                r=num/i;
-                cout<<num<<" is not a prime number."<<i<<"X"<<r<<"="<<i*r<<endl;
-                return; 
+                isprime=false;
+                break;
             }
         }
-        cout<<num<<" is a prime number."<<endl;
+        if(isprime){
+            cout<<num<<" is a prime number."<<endl;
+        }else{
+            cout<<num<<" is not a prime number."<<endl;
+            cout<<"The factors of "<<num<<" are: ";
+            for(int i=1; i<=num; i++){
+                if(num%i==0){
+                    cout<<i<<"X"<<num/i<<"="<<num<<endl;
+                }
+            }
+            cout<<endl;
+        }
     }
 };
 class addition{
