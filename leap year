@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+int main(){
+    while(true){
+        int year=0,leap=0;
+        char choice;
+        cout<<"Enter a year-->";
+        cin>>year;
+        if(year<1000||year>9999){
+            cout<<"plz enter year only"<<endl;
+            continue;
+        }
+        leap=year/100;
+        if(leap%4==0){
+            cout<<year<<" is a leap year"<<endl;
+        }else{
+            cout<<year<<" is not a leap year"<<endl;
+        }
+        cout<<"Do you want to continue(Y/N)-->";
+        cin>>choice;
+        if(choice=='n'||choice=='N'){
+            cout<<"Thank you:)";
+            break;
+        }
+    }
+}
